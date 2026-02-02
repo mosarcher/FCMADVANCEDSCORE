@@ -1,22 +1,35 @@
-import { Save } from "lucide-react";
+import React from "react";
+import { Save, PlusCircle } from "lucide-react";
 
-export function ActionButtons({ onNewGame, onSaveGame, isSaving, gameId }) {
+// Dit blokje vertelt Vercel precies wat de variabelen zijn
+interface ActionButtonsProps {
+  onNewGame: any;
+  onSaveGame: any;
+  isSaving: any;
+  gameId: any;
+}
+
+export function ActionButtons({
+  onNewGame,
+  onSaveGame,
+  isSaving,
+  gameId,
+}: ActionButtonsProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-5">
       <div className="flex gap-3">
         <button
           onClick={onNewGame}
-          className="flex-1 py-3 px-4 bg-[#2a2a2a] border border-[#444] rounded-lg text-[#FFC107] font-semibold hover:bg-[#333] transition-colors"
+          className="flex items-center gap-2 bg-yellow-500 p-3 rounded shadow"
         >
-          New Game
+          <PlusCircle size={20} /> Nieuw Spel
         </button>
         <button
           onClick={onSaveGame}
           disabled={isSaving}
-          className="flex-1 py-3 px-4 bg-[#FFC107] rounded-lg text-[#1a1a1a] font-bold flex items-center justify-center gap-2 hover:bg-[#FFD54F] transition-colors disabled:opacity-50"
+          className="flex items-center gap-2 bg-green-600 text-white p-3 rounded shadow"
         >
-          <Save size={18} />
-          {isSaving ? "Saving..." : gameId ? "Update Game" : "Save Game"}
+          <Save size={20} /> {isSaving ? "Opslaan..." : "Spel Opslaan"}
         </button>
       </div>
     </div>
